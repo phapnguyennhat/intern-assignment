@@ -2,7 +2,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import 'dotenv/config';
 import { DataSource, DataSourceOptions } from 'typeorm';
-
+import { ExamResult } from '../src/database/entity/examResult.entity';
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
   inject: [ConfigService],
@@ -16,10 +16,9 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       database: configService.get('POSTGRES_DB'),
       entities: ['dist/**/*.entity.js'],
       synchronize: true,
-      timezone: 'Asia/Ho_Chi_Minh',
-      // logging: true,
+      logging: true,
       migrations: ['dist/db/migrations/*.js'],
-      ssl: true
+     
     };
   },
 };
@@ -31,10 +30,11 @@ export const dataSourceOptions: DataSourceOptions = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  entities: ['dist/**/*.entity.js'],
+  entities: [ExamResult],
   synchronize: false,
+  logging: true,
   migrations: ['dist/db/migrations/*.js'],
-  ssl: true
+
 };
 
 const dataSource = new DataSource(dataSourceOptions);
