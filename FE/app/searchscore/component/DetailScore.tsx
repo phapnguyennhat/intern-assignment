@@ -1,16 +1,7 @@
 import { getExamResult } from "@/app/API/exam/query"
+import { SUBJECT_NAMES } from "@/common/constant"
 import { isErrorResponse } from "@/lib/utils"
-const subjectNames: Record<string, string> = {
-    toan: 'Toán',
-    ngu_van: 'Ngữ Văn',
-    ngoai_ngu: 'Ngoại Ngữ',
-    vat_li: 'Vật Lý',
-    hoa_hoc: 'Hóa Học',
-    sinh_hoc: 'Sinh Học',
-    lich_su: 'Lịch Sử',
-    dia_li: 'Địa Lý',
-    gdcd: 'GDCD'
-}
+
 
 interface IProps {
     searchParams: Promise<{ sbd: string }>
@@ -22,7 +13,7 @@ export default async function DetailScore({ searchParams }: IProps) {
 
     if (!examResult) {
         return (
-            <div className='bg-white border rounded-lg shadow-md px-4 py-8'>
+            <div className='bg-white dark:bg-gray-800 border rounded-lg shadow-md px-4 py-8'>
             <h5 className="text-2xl font-bold mb-3">Detailed Score</h5>
 
                 <p>Detailed view of search scores here!</p>
@@ -37,16 +28,16 @@ export default async function DetailScore({ searchParams }: IProps) {
             key !== 'createdAt' &&
             key !== 'updatedAt' &&
             key !== 'sbd' &&
-            key !== 'ma_ngoai_ngu' &&
+            // key !== 'ma_ngoai_ngu' &&
             value !== null
         )
         .map(([key, value]) => ({
-            name: subjectNames[key] || key,
+            name: SUBJECT_NAMES[key] || key,
             score: value
         }))
 
     return (
-        <div className='bg-white border rounded-lg shadow-md px-4 py-8'>
+        <section className='bg-white dark:bg-gray-800 border rounded-lg shadow-md px-4 py-8'>
             <h5 className="text-2xl font-bold mb-3">Detailed Score</h5>
 
             {isErrorResponse(examResult) ? <div>
@@ -59,6 +50,6 @@ export default async function DetailScore({ searchParams }: IProps) {
                     </div>
                 ))}
             </div>}
-        </div>
+        </section>
     )
 }

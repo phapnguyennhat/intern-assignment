@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {  Rubik } from "next/font/google";
+import {  Rubik, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
 import Header from "@/components/Header";
@@ -7,9 +7,9 @@ import NavSideDesktop from "@/components/NavSideDesktop";
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
-  
-
 });
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",

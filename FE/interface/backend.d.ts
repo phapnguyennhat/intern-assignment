@@ -24,6 +24,7 @@ declare global {
         good: number,
         average: number,
         weak: number,
+        subject: string
     }
 }
 

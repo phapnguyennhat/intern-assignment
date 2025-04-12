@@ -30,7 +30,7 @@ export default function FormCheckScore() {
     }
 
     return (
-        <div className = ' bg-white border rounded-lg shadow-md  px-4 py-8'>
+        <section className = ' bg-white dark:bg-gray-800 border rounded-lg shadow-md  px-4 py-8'>
             <h5 className="text-2xl font-bold mb-3">User Registration</h5>
 
             <p className="mb-1" >Registration Number:</p>
@@ -49,6 +49,6 @@ export default function FormCheckScore() {
                 <Button className = 'rounded-sm' type="submit">Submit</Button>
             </form>
              {errors.sbd && <p className="text-red-500">{errors.sbd.message}</p>}
-        </div>
+        </section>
     )
 }

@@ -1,5 +1,6 @@
 import { REVALIDATE_TIME } from "@/common/constant"
-import { fetcher } from "@/lib/utils"
+import { fetcher, isErrorResponse } from "@/lib/utils"
+import { notFound } from "next/navigation";
 
 export const getExamResult = async (sbd: string) => {
     if (!sbd) { 
@@ -12,5 +13,22 @@ export const getExamResult = async (sbd: string) => {
             tags: [`exam-result-${sbd}`]
         }
     })
+    return response
+}
+
+export const getScoreReport = async (subject: string) => {
+    if(!subject) {
+       return  notFound()
+    }
+    const response = await fetcher<ScoreReport>(`exam/score-report?subject=${subject}`, {
+        method: 'GET',
+        next: {
+            revalidate: REVALIDATE_TIME,
+            tags: [`score-report-${subject}`]
+        }
+    })
+    if (isErrorResponse(response)) {
+        return notFound()
+    }
     return response
 }
