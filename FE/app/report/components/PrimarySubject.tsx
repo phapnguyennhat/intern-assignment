@@ -11,7 +11,8 @@ export default async function PrimarySubject() {
 
     
     return (
-        <section className="bg-[#f5f5f5] dark:bg-gray-800 border rounded-lg shadow-md px-4 py-8">
+        <section className="   dark:bg-gray-800  py-8">
+
             <h5 className="text-2xl font-bold mb-3">Math, Literature, and English Subject Group   </h5>
 
             <div className = 'space-y-4'>
