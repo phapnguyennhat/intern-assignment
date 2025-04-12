@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {  Rubik, Montserrat } from "next/font/google";
+import {  Rubik } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
 import Header from "@/components/Header";

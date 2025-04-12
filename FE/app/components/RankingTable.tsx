@@ -2,7 +2,7 @@ import { SUBJECT_NAMES } from "@/common/constant"
 import {
     Table,
     TableBody,
-    TableCaption,
+
     TableCell,
     TableFooter,
     TableHead,

@@ -18,7 +18,9 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       synchronize: false,
       logging: true,
       migrations: ['dist/db/migrations/*.js'],
-      ssl: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
      
     };
   },
@@ -35,7 +37,9 @@ export const dataSourceOptions: DataSourceOptions = {
   synchronize: false,
   logging: true,
   migrations: ['dist/db/migrations/*.js'],
-  ssl: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 
 
 };
