@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {  Rubik } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import { ThemeProvider } from "@/provider/theme-provider";
+import Header from "@/components/Header";
+import NavSideDesktop from "@/components/NavSideDesktop";
+const rubik = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
-});
+  
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -25,9 +24,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${rubik.variable}  antialiased`}
       >
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+       
+          <Header />
+          <NavSideDesktop />
+          <main className="lg:ml-64 mt-[68px]">
+              {children}
+          </main>
+
+         
+          </ThemeProvider>
       </body>
     </html>
   );

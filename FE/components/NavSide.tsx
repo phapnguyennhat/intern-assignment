@@ -1,0 +1,46 @@
+'use client'
+
+import {  Menu, X } from "lucide-react";
+import { useState } from "react";
+import Link from "next/link";
+
+export default function NavSide() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div>
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 lg:hidden  ">
+                {isOpen ? (
+                    <X className="text-white dark:text-black" />
+                ) : (
+                    <Menu className="text-white dark:text-black" />
+                )}
+            </button>
+
+            {/* Sidebar */}
+            <div
+                className={`fixed top-[72px] left-0 h-full w-64 bg-gradient-to-b from-yellow-400 to-blue-500 shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
+                    isOpen ? "translate-x-0" : "-translate-x-full"
+                }`}
+            >
+                <div className=" pt-4">
+                    <h2 className="text-xl  px-4 font-bold mb-4">Menu</h2>
+                    <ul onClick={() => setIsOpen(false)} className="space-y-2">
+                    <li><Link href="/" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Dashboard</Link></li>
+                        <li><Link href="/searchscore" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Search Scores</Link></li>
+                        <li><Link href="/report" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Reports</Link></li>
+                        <li><Link href="/setting" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Settings</Link></li>
+                    </ul>
+                </div>
+            </div>
+
+            {/* Overlay */}
+            {isOpen && (
+                <div
+                    className="fixed inset-0 bg-black/20 bg-opacity-50 z-40"
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
+        </div>
+    );
+}
