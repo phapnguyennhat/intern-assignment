@@ -1,4 +1,4 @@
-export const REVALIDATE_TIME = 5 * 60
+export const REVALIDATE_TIME = 10 * 60
 
 export const PRIMARY_SUBJECTS = ['toan', 'ngu_van', 'ngoai_ngu']
 

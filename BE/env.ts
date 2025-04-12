@@ -8,4 +8,6 @@ export const validationSchema = Joi.object({
   POSTGRES_DB: Joi.string().required(),
   PORT: Joi.number().required(),
 
+  REDIS_CONNECT: Joi.string().required(),
+
 })

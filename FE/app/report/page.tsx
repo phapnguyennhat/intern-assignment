@@ -1,6 +1,13 @@
 import PrimarySubject from "./components/PrimarySubject";
 import SocialSubject from "./components/SocialSubject";
 import ScienceSubject from "./components/ScienceSubject";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Report",
+  description: "Welcome to the report page. This is the report page for the exam results.",
+};
 
 export default function Report() {
     return (

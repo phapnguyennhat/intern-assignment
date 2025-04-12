@@ -25,3 +25,7 @@ export const GROUP_D07 = {
     subject3: 'ngoai_ngu',
     ma_ngoai_ngu: ForeignLanguageCode.ENGLISH,
 }
+
+export const CACHE_TTL = 10 * 60*1000
+
+export const REDIS_MANAGER = 'REDIS_MANAGER'
