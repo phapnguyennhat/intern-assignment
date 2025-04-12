@@ -4,7 +4,7 @@ import { EOrder } from "src/common/enum/order.enum";
 export enum EGroupType {
     A = 'a',
     B = 'b',
-    A1 = 'a1',
+    A01 = 'a01',
     D07 = 'd07',
 }
 

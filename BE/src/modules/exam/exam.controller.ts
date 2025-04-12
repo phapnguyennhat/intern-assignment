@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ExamService } from './exam.service';
 import { CheckScoreQuery } from './dto/checkScore.query';
 import { EGroupType, GroupQuery } from './dto/group.query';
-import { GROUP_A1, GROUP_B, GROUP_D07, GROUP_A } from 'src/common/constant';
+  import { GROUP_B, GROUP_D07, GROUP_A, GROUP_A01 } from 'src/common/constant';
 import { ScoreReportQuery } from './dto/scoreReport.query';
 @Controller('exam')
 export class ExamController {
@@ -24,8 +24,8 @@ export class ExamController {
     if (groupType === EGroupType.A) { 
       return this.examService.getStudentByGroup(GROUP_A, order, page, limit)
     }
-    else if (groupType === EGroupType.A1) { 
-      return this.examService.getStudentByGroup(GROUP_A1, order, page, limit)
+    else if (groupType === EGroupType.A01) { 
+      return this.examService.getStudentByGroup(GROUP_A01, order, page, limit)
     }
     else if (groupType === EGroupType.B) { 
       return this.examService.getStudentByGroup(GROUP_B, order, page, limit)

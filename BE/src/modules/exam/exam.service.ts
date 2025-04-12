@@ -32,32 +32,40 @@ export class ExamService {
 
 
 
-        return {total, excellent, good, average, weak}
+        return {total, excellent, good, average, weak, subject}
 
 
-        
-
-        
-
-        
     }
 
   
-
     async getStudentByGroup(groupSubject: GroupSubject, order: EOrder, page: number, limit: number) {
-        const { subject1, subject2, subject3, ma_ngoai_ngu } = groupSubject
-        const queryBuilder = this.dataSource.createQueryBuilder(ExamResult, 'examResult')
-        .andWhere(`examResult.${subject1} is not null`)
-        .andWhere(`examResult.${subject2} is not null`)
-        .andWhere(`examResult.${subject3} is not null`)
-        .select(['examResult.sbd', `examResult.${subject1}`, `examResult.${subject2}`, `examResult.${subject3}`])
-        .limit(limit)
-        .offset((page - 1) * limit)
-        .orderBy(`examResult.${subject1} + examResult.${subject2} + examResult.${subject3}`, order)
+        const { subject1, subject2, subject3, ma_ngoai_ngu } = groupSubject;
+        const queryBuilder = this.dataSource
+            .createQueryBuilder(ExamResult, 'examResult')
+            .andWhere(`examResult.${subject1} is not null`)
+            .andWhere(`examResult.${subject2} is not null`)
+            .andWhere(`examResult.${subject3} is not null`)
+            .select([
+                'examResult.sbd',
+                `examResult.${subject1}`,
+                `examResult.${subject2}`,
+                `examResult.${subject3}`,
+                'examResult.ma_ngoai_ngu',
+       
+              
+            ])
+            .limit(limit)
+            .offset((page - 1) * limit)
+            .orderBy(`examResult.${subject1} + examResult.${subject2} + examResult.${subject3}`, order).addOrderBy('examResult.sbd', order);;
+    
+        if (ma_ngoai_ngu) {
+            queryBuilder.andWhere('examResult.ma_ngoai_ngu = :ma_ngoai_ngu', { ma_ngoai_ngu });
+        }
+    
         const [data, count] = await queryBuilder.getManyAndCount();
         return {
             data,
-            count
-        }
+            count,
+        };
     }
 }

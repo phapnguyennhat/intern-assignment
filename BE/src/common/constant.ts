@@ -6,7 +6,7 @@ export const GROUP_A = {
     subject3: 'hoa_hoc',
 }
 
-export const GROUP_A1 = {
+export const GROUP_A01 = {
     subject1: 'toan',
     subject2: 'vat_li',
     subject3: 'ngoai_ngu',

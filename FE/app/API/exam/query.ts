@@ -32,3 +32,21 @@ export const getScoreReport = async (subject: string) => {
     }
     return response
 }
+
+export const getStudentByGroup = async (groupType: string, order: string) => {
+    const response = await fetcher<{data: Exam[], count: number}>(`exam/group?groupType=${groupType}&order=${order}`, {
+        method: 'GET',
+        next: {
+            revalidate: REVALIDATE_TIME,
+            tags: ['exam-group', groupType,order]
+        }
+    })
+    if (isErrorResponse(response)) {
+       
+        return {
+            data: [],
+            count: 0
+        }
+    }
+    return response
+}
