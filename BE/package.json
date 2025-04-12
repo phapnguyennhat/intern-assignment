@@ -40,10 +40,12 @@
     "moment-timezone": "^0.5.47",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "passport-jwt": "^4.0.1",
     "pg": "^8.14.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.21"
+    "typeorm": "^0.3.21",
+    "cookie-parser": "^1.4.7"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -60,12 +62,10 @@
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
-    "cookie-parser": "^1.4.7",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.5.0",
-    "passport-jwt": "^4.0.1",
     "prettier": "^3.0.0",
     "source-map-support": "^0.5.21",
     "supertest": "^6.3.3",
