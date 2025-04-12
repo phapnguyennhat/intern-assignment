@@ -9,6 +9,7 @@ import { validationSchema } from 'env';
 import LogsMiddleware from './util/log.middleware';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { AllExceptionsFilter } from './util/all-exception.filter';
+import { ExamModule } from './modules/exam/exam.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AllExceptionsFilter } from './util/all-exception.filter';
       validationSchema: validationSchema,
       isGlobal: true,
     }),
+    ExamModule,
   ],
   controllers: [AppController],
   providers: [

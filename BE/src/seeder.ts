@@ -30,17 +30,17 @@ async function seed() {
 
   stream.on('data', async (row) => {
     const examResult = examResultRepository.create({
-      sbd: row.sbd,
-      toan: parseFloat(row.toan),
-      ngu_van: parseFloat(row.ngu_van),
-      ngoai_ngu: parseFloat(row.ngoai_ngu),
-      vat_li: parseFloat(row.vat_li),
-      hoa_hoc: parseFloat(row.hoa_hoc),
-      sinh_hoc: parseFloat(row.sinh_hoc),
-      lich_su: parseFloat(row.lich_su),
-      dia_li: parseFloat(row.dia_li),
-      gdcd: parseFloat(row.gdcd),
-      ma_ngoai_ngu: row.ma_ngoai_ngu,
+      sbd: row.sbd || null,
+      toan: row.toan ? parseFloat(row.toan) : null,
+      ngu_van: row.ngu_van ? parseFloat(row.ngu_van) : null,
+      ngoai_ngu: row.ngoai_ngu ? parseFloat(row.ngoai_ngu) : null,
+      vat_li: row.vat_li ? parseFloat(row.vat_li) : null,
+      hoa_hoc: row.hoa_hoc ? parseFloat(row.hoa_hoc) : null,
+      sinh_hoc: row.sinh_hoc ? parseFloat(row.sinh_hoc) : null,
+      lich_su: row.lich_su ? parseFloat(row.lich_su) : null,
+      dia_li: row.dia_li ? parseFloat(row.dia_li) : null,
+      gdcd: row.gdcd ? parseFloat(row.gdcd) : null,
+      ma_ngoai_ngu: row.ma_ngoai_ngu || null,
     });
 
     batch.push(examResult);
