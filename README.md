@@ -8,7 +8,8 @@ TechStack: NestJs, NextJs, Postgres, Redis
 - [Project Structure](#project-structure)
 - [Precondition](#precondition)
 - [Running the Application](#running-the-application)
-
+- [Contributor](#contributor)
+- [Contact](#contact)
 ---
 
 ## [Link Demo](https://intern-assignment-cyan.vercel.app/report)
@@ -65,7 +66,7 @@ cd intern-assignment
     redis://redis:6379 (Redis)
 ```
 
-⚠️Notice: 
+⚠️ Notice: 
 - If you open the frontend app and don’t see any data, it’s possible that Next.js or Redis cached empty data before the dataset was saved to the database. To resolve this issue, you should clear all cache in Redis and then restart the container.
 - If you encounter any issues while running the application, don’t hesitate to contact me.
 
