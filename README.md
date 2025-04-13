@@ -51,6 +51,17 @@ git checkout staging
 ```bash
 docker compose up -d
 ```
+
+### Step 4: Create file .env in folder BE
+intern-assignment/BE/.env
+```bash
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_USER=root
+POSTGRES_PASSWORD=root
+POSTGRES_DB=intern-assignment
+REDIS_CONNECT = redis://redis:6379
+```
 ### Step 4: Run migration
 ```bash
 cd BE
