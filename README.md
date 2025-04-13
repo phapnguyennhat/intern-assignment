@@ -55,8 +55,8 @@ docker compose up -d
 ### Step 4: Create file .env in folder BE
 intern-assignment/BE/.env
 ```bash
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5433
 POSTGRES_USER=root
 POSTGRES_PASSWORD=root
 POSTGRES_DB=intern-assignment
