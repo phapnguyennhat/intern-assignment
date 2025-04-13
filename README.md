@@ -41,12 +41,28 @@ git clone https://github.com/phapnguyennhat/intern-assignment.git
 cd intern-assignment
 ```
 
+### Step 2: Checkout staging branch
+```bash
+git checkout staging
+```
 
-### Step 2: Run containers (FE,BE, PostgreSQL, Redis)
+
+### Step 3: Run containers (FE,BE, PostgreSQL, Redis)
 ```bash
 docker compose up -d
 ```
-### Step 3: Run migration
+
+### Step 4: Create file .env in folder BE
+intern-assignment/BE/.env
+```bash
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5433
+POSTGRES_USER=root
+POSTGRES_PASSWORD=root
+POSTGRES_DB=intern-assignment
+REDIS_CONNECT = redis://localhost:6379
+```
+### Step 4: Run migration
 ```bash
 cd BE
 npm install
@@ -55,12 +71,12 @@ npm run migration:generate -- db/migrations/create_table_examResult
 # Follow format db/migrations/${name_migrations}
 npm run migration:run
 ```
-### Step 4: Save dataset into database
+### Step 5: Save dataset into database
 ```bash
     npm run seed
     # it take about 15-20 minutes
 ```
-###  Step 5: Open service
+###  Step 6: Open service
 ``` bash
     http://localhost:3000 (Front-End)
     http://localhost:8080 (Back-End)
