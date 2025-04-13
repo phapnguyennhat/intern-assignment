@@ -20,32 +20,35 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 import { SUBJECT_NAMES } from "@/common/constant"
+import { useTheme } from "next-themes"
 
 
 
-const chartConfig = {
-  excellent: {
-    label: "Excellent",
-    color: "#0088FE",
-  },
-  good: {
-    label: "Good",
-    color: "#00C49F",
-  },
-  average: {
-    label: "Average",
-    color: "#FFBB28",
-  },
-  weak: {
-    label: "Weak",
-    color: "#FF8042",
-  },
-} satisfies ChartConfig
 
 interface IProps {
   listScoreReport: ScoreReport[]
 }
 export default function BarStackChart({ listScoreReport }: IProps) {
+  const { theme } = useTheme()
+
+  const chartConfig = {
+    excellent: {
+      label: "Excellent",
+      color: theme === "dark" ? "#4A90E2" : "#0088FE",
+    },
+    good: {
+      label: "Good",
+      color: theme === "dark" ? "#2ECC71" : "#00C49F",
+    },
+    average: {
+      label: "Average",
+      color: theme === "dark" ? "#F1C40F" : "#FFBB28",
+    },
+    weak: {
+      label: "Weak",
+      color: theme === "dark" ? "#E74C3C" : "#FF8042",
+    },
+  } satisfies ChartConfig
   const chartData = listScoreReport.map((scoreReport) => ({
     subject: SUBJECT_NAMES[scoreReport.subject],
     excellent: scoreReport.excellent,
@@ -53,11 +56,15 @@ export default function BarStackChart({ listScoreReport }: IProps) {
     average: scoreReport.average,
     weak: scoreReport.weak,
   }))
+
+
+
+ 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Stacked + Legend</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>2024 Vietnam National High School Exam </CardTitle>
+        {/* <CardDescription>Not counting students who did not take the exam and were exempted</CardDescription> */}
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -100,12 +107,10 @@ export default function BarStackChart({ listScoreReport }: IProps) {
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
+            <div className="flex items-center gap-2 font-medium leading-none">
+            Chart of Scores Statistics in 2024
+            </div>
+            <div className="leading-none text-muted-foreground">Not counting students who did not take the exam and were exempted</div>
       </CardFooter>
     </Card>
   )
