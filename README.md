@@ -15,7 +15,7 @@ TechStack: NestJs, NextJs, Postgres, Redis
     
 
 ## Project Structure
-    web dev-intern-assignment-3/
+    intern-assignment/
     ├── BE/
     │   ├── Dockerfile
     ├── FE/
@@ -27,7 +27,7 @@ TechStack: NestJs, NextJs, Postgres, Redis
 
 - Node.js >= 18.x (I use version 21.6.2)
 - npm or yarn
-- Docker (optional)
+- Docker 
 
 ## Running the Application
 
@@ -65,8 +65,16 @@ cd intern-assignment
     redis://redis:6379 (Redis)
 ```
 
+⚠️Notice: 
+- If you open the frontend app and don’t see any data, it’s possible that Next.js or Redis cached empty data before the dataset was saved to the database. To resolve this issue, you should clear all cache in Redis and then restart the container.
+- If you encounter any issues while running the application, don’t hesitate to contact me.
+
+
 # Contributor
 - Nguyen Nhat Phap (HCMUT-VNU)
+
+# Contact 
+- ✉️ nguyennhatphapbp@gmail.com
 
 
 
