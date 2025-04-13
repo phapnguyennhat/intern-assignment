@@ -1,6 +1,4 @@
-import PrimarySubject from "./components/PrimarySubject";
-import SocialSubject from "./components/SocialSubject";
-import ScienceSubject from "./components/ScienceSubject";
+
 import { Metadata } from "next";
 import BarStackChart from "./components/BarStackChart";
 import { getScoreReport } from "../API/exam/query";
