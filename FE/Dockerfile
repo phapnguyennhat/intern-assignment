@@ -1,25 +1,34 @@
-# Stage 1: Build
-FROM node:20 AS builder
+FROM node:20-alpine AS base
+
+FROM base AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
 
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+ARG BACKEND_URL
 RUN npm run build
 
-# Stage 2: Production image
-FROM node:20-slim AS runner
+FROM base AS runner
 
 WORKDIR /app
 
-# Copy only necessary files
-COPY --from=builder /app/package*.json ./
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+# Copy node_modules và package.json từ builder sang runner
+COPY --from=builder /app/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
+
+# Copy các folder cần thiết cho runtime
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
 
 EXPOSE 3000
 

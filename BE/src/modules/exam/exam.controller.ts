@@ -5,13 +5,13 @@ import { CheckScoreQuery } from './dto/checkScore.query';
 import { EGroupType, GroupQuery } from './dto/group.query';
 import { GROUP_B, GROUP_D07, GROUP_A, GROUP_A01 } from 'src/common/constant';
 import { ScoreReportQuery } from './dto/scoreReport.query';
-import { Cache } from 'cache-manager';
+
 
 
 @Controller('exam')
 export class ExamController {
   constructor(private readonly examService: ExamService,
-    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
+ 
   ) { }
 
   @Get('student')

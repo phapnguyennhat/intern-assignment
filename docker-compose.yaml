@@ -2,7 +2,7 @@ version: '3'
 services:
   nestjs-app:
     build:
-      context: .
+      context: ./BE
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -12,7 +12,20 @@ services:
       - postgres
       - redis
     networks:
-      - nestjs-app-network
+      - app-network
+  
+  nextjs-app:
+    build:
+      context: ./FE
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - docker.env
+    networks:
+      - app-network
+    depends_on:
+      - nestjs-app
 
   postgres:
     image: postgres:latest
@@ -23,7 +36,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - nestjs-app-network
+      - app-network
 
   redis:
     image: "redis:alpine"
@@ -32,7 +45,7 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - nestjs-app-network
+      - app-network
  
   redis-commander:
     image: rediscommander/redis-commander:latest
@@ -43,13 +56,13 @@ services:
     depends_on:
         - redis
     networks:
-      - nestjs-app-network
+      - app-network
 
 
 volumes:
   postgres_data:
   redis_data:
 networks:
-  nestjs-app-network:
+  app-network:
     driver: bridge
 

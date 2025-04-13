@@ -28,7 +28,11 @@ export class ExamService {
         const average = await this.examRepo.createQueryBuilder('examResult').where(`examResult.${subject} >= 4.0`).andWhere(`examResult.${subject} < 6.0`).getCount()
         const weak = await this.examRepo.createQueryBuilder('examResult').where(`examResult.${subject} < 4.0`).getCount()
 
-       const total = excellent + good + average + weak
+        const total = excellent + good + average + weak
+        
+        if(total === 0) {
+            throw new NotFoundException('No data found')
+        }
 
 
 
@@ -63,6 +67,10 @@ export class ExamService {
         }
     
         const [data, count] = await queryBuilder.getManyAndCount();
+
+        if(count === 0) {
+            throw new NotFoundException('No data found')
+        }
         return {
             data,
             count,

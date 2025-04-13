@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as csvParser from 'csv-parser';
-import { DataSource } from 'typeorm';
+
 
 import dataSource from '../db/data-source'; 
 
@@ -21,7 +21,7 @@ async function seed() {
   const saveBatch = async () => {
     if (batch.length > 0) {
       await examResultRepository.save(batch);
-      batch = []; // clear batch
+      batch = [];
     }
   };
 
@@ -46,15 +46,15 @@ async function seed() {
     batch.push(examResult);
 
     if (batch.length >= BATCH_SIZE) {
-      stream.pause(); // tạm dừng stream để đợi save xong
+      stream.pause(); 
       await saveBatch();
-      stream.resume(); // tiếp tục stream
+      stream.resume(); 
     }
   });
 
   stream.on('end', async () => {
-    await saveBatch(); // save những cái còn lại
-    console.log('Seed thành công!');
+    await saveBatch(); 
+    console.log('Seed successfully!');
     await dataSource.destroy();
   });
 

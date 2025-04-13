@@ -1,6 +1,6 @@
+Dockerfile
+.dockerignore
 node_modules
 .next
-.git
-Dockerfile
-.env
-docker.env
+!.next/static
+!.next/standalone
