@@ -60,7 +60,7 @@ POSTGRES_PORT=5433
 POSTGRES_USER=root
 POSTGRES_PASSWORD=root
 POSTGRES_DB=intern-assignment
-REDIS_CONNECT = redis://redis:6379
+REDIS_CONNECT = redis://localhost:6379
 ```
 ### Step 4: Run migration
 ```bash
