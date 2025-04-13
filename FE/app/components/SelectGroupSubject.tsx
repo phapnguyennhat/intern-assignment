@@ -8,6 +8,7 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useState } from "react"
 
 const groups = [
   {
@@ -35,14 +36,17 @@ const groups = [
 export default function SelectGroupSubject() {
   const searchParams = useSearchParams()
   const groupType = searchParams.get('groupType')
-  const router= useRouter()
+  const router = useRouter()
+  
+  const [value, setValue] = useState(groupType ?? 'a')
 
   const handleChange = (value: string) => {
+    setValue(value)
     router.push(`?groupType=${value}`)
   }
 
     return (
-        <Select  value = {groupType ?? 'a'} onValueChange={handleChange}>
+        <Select  value = {value} onValueChange={handleChange}>
         <SelectTrigger className="w-[80px]">
           <SelectValue placeholder="Select a Group Subject" />
         </SelectTrigger>

@@ -3,9 +3,11 @@
 import {  Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function NavSide() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <div>
@@ -26,10 +28,10 @@ export default function NavSide() {
                 <div className=" pt-4">
                     <h2 className="text-xl  px-4 font-bold text-center text-white mb-4">Menu</h2>
                     <ul onClick={() => setIsOpen(false)} className="space-y-2">
-                    <li><Link href="/" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Dashboard</Link></li>
-                        <li><Link href="/searchscore" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Search Scores</Link></li>
-                        <li><Link href="/report" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Reports</Link></li>
-                        <li><Link href="/setting" className="block px-4 hover:bg-white/20 p-2 rounded text-white">Settings</Link></li>
+                    <li><Link href="/" className={`block px-4 hover:bg-white/20 p-2 rounded text-white ${pathname === '/' ? 'bg-white/20' : ''}`}>Dashboard</Link></li>
+                        <li><Link href="/searchscore" className={`block px-4 hover:bg-white/20 p-2 rounded text-white ${pathname === '/searchscore' ? 'bg-white/20' : ''}`}>Search Scores</Link></li>
+                        <li><Link href="/report" className={`block px-4 hover:bg-white/20 p-2 rounded text-white ${pathname === '/report' ? 'bg-white/20' : ''}`}>Reports</Link></li>
+                        <li><Link href="/setting" className={`block px-4 hover:bg-white/20 p-2 rounded text-white ${pathname === '/setting' ? 'bg-white/20' : ''}`}>Settings</Link></li>
                     </ul>
                 </div>
             </div>

@@ -29,4 +29,8 @@ export function isErrorResponse(response: any): response is { statusCode: number
 	  return false
 	}
 	return 'statusCode' in response;
-  }
+}
+  
+export async function delay(ms: number) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}

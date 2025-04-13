@@ -10,9 +10,9 @@ export default async function ScienceSubject() {
     ])
     
     return (
-        <section className="   dark:bg-gray-800   py-8">
+        <section className="     py-8">
 
-            <h5 className="text-2xl font-bold mb-3">Natural Sciences Group (Physics, Chemistry, Biology)</h5>
+            <h5 className="text-xl md:text-2xl font-bold mb-3">Natural Sciences Group (Physics, Chemistry, Biology)</h5>
             
 
             <div className = 'space-y-4'>

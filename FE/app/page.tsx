@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import NameRankingTable from "./components/NameRankingTable";
-import RankingTable from "./components/RankingTable";
+import RankingTable, { SkeletonRankingTable } from "./components/RankingTable";
+import { Suspense } from "react";
 
 
 export const metadata: Metadata = {
@@ -9,15 +10,21 @@ export const metadata: Metadata = {
 };
 
 interface IProps {
-  searchParams : Promise<{groupType: string}>
+  searchParams: Promise<{ groupType: string }>
 }
-export default  function Home({searchParams}: IProps) {
- 
+export default function Home({ searchParams }: IProps) {
+
   return (
     <div className="px-4  md:px-8 lg:px-12 py-4 space-y-8">
       <NameRankingTable />
-      <RankingTable searchParams={searchParams} />
+
       
+      <Suspense fallback={<SkeletonRankingTable />}>
+        <RankingTable searchParams={searchParams} />
+      </Suspense>
+
+
+
 
     </div>
   );

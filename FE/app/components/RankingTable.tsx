@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { getStudentByGroup } from "../API/exam/query"
-
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface IProps {
     searchParams: Promise<{ groupType: string }>
@@ -71,4 +71,35 @@ const columnOfGroup = {
     a01: ['toan', 'vat_li', 'ngoai_ngu', 'ma_ngoai_ngu'],
     b: ['toan', 'hoa_hoc', 'sinh_hoc'],
     d07: ['toan', 'hoa_hoc', 'ngoai_ngu', 'ma_ngoai_ngu'],
+}
+
+
+export function SkeletonRankingTable() {
+    return (
+        <Table>
+            <TableHeader>
+                <TableRow>
+                    <TableHead className="text-left w-[100px]"><Skeleton className="w-[100px] h-[20px]" /></TableHead>
+                    <TableHead className="text-center "><Skeleton className="w-[80%] h-[20px]" /></TableHead>
+                    <TableHead className="text-center "><Skeleton className="w-[80%] h-[20px]" /></TableHead>
+                    <TableHead className="text-center "><Skeleton className="w-[80%] h-[20px]" /></TableHead>
+                    <TableHead className="text-right w-[100px]"><Skeleton className="w-[100px] h-[20px]" /></TableHead>
+                    
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {
+                    Array.from({length: 10}).map((_, index) => (
+                        <TableRow key={index}>
+                            <TableCell className="text-left w-[100px]"><Skeleton className="w-[100px] h-[20px]" /></TableCell>
+                    <TableCell className="text-center "><Skeleton className="w-[80%] h-[20px]" /></TableCell>
+                    <TableCell className="text-center "><Skeleton className="w-[80%] h-[20px]" /></TableCell>
+                    <TableCell className="text-center "><Skeleton className="w-[80%] h-[20px]" /></TableCell>
+                            <TableCell className="text-right w-[100px]"><Skeleton className="w-[100px] h-[20px]" /></TableCell>
+                        </TableRow>
+                    ))
+                }
+            </TableBody>
+        </Table>
+    )
 }

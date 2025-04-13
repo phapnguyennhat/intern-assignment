@@ -2,6 +2,7 @@ import { REVALIDATE_TIME } from "@/common/constant"
 import { fetcher, isErrorResponse } from "@/lib/utils"
 import { notFound } from "next/navigation";
 
+
 export const getExamResult = async (sbd: string) => {
     if (!sbd) { 
         return;
@@ -41,6 +42,7 @@ export const getStudentByGroup = async (groupType: string, order: string) => {
             tags: ['exam-group', groupType,order]
         }
     })
+   
     if (isErrorResponse(response)) {
        
         return {
