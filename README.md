@@ -12,7 +12,7 @@ TechStack: NestJs, NextJs, Postgres, Redis
 - [Contact](#contact)
 ---
 
-## [Link Demo](https://intern-assignment-cyan.vercel.app/report)
+## [Link Demo](https://intern-assignment-cyan.vercel.app)
     
 
 ## Project Structure
@@ -20,7 +20,7 @@ TechStack: NestJs, NextJs, Postgres, Redis
     ├── BE/
     │   ├── Dockerfile
     │   ├──src/
-    │   │   │── seeder.ts
+    │   └──└── seeder.ts
     ├── FE/
     │   ├── Dockerfile
     ├── docker-compose.yml
@@ -29,7 +29,7 @@ TechStack: NestJs, NextJs, Postgres, Redis
 ## Precondition
 
 - Node.js >= 18.x (I use version 21.6.2)
-- npm or yarn
+- npm 
 - Docker 
 
 ## Running the Application
@@ -44,15 +44,16 @@ cd intern-assignment
 
 ### Step 2: Run containers (FE,BE, PostgreSQL, Redis)
 ```bash
-    docker compose up -d
+docker compose up -d
 ```
 ### Step 3: Run migration
 ```bash
-    cd BE
-    npm run migration:generate -- db/migrations/create_table_examResult
-    # you can rename migration if you want. 
-    # Follow format db/migrations/${name_migrations}
-    npm run migration:run
+cd BE
+npm install
+npm run migration:generate -- db/migrations/create_table_examResult
+# you can rename migration if you want. 
+# Follow format db/migrations/${name_migrations}
+npm run migration:run
 ```
 ### Step 4: Save dataset into database
 ```bash
