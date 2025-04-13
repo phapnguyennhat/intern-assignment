@@ -3,6 +3,7 @@ import {
     Table,
     TableBody,
 
+ 
     TableCell,
     TableFooter,
     TableHead,
@@ -11,17 +12,20 @@ import {
 } from "@/components/ui/table"
 import { getStudentByGroup } from "../API/exam/query"
 import { Skeleton } from "@/components/ui/skeleton"
+import PaginationTable from "@/components/PaginationTable"
 
 interface IProps {
-    searchParams: Promise<{ groupType: string }>
+    searchParams: Promise<{ groupType: string , page:number}>
 }
 
 
 
 export default async function RankingTable({ searchParams }: IProps) {
-    const { groupType = 'a' } = await searchParams
+    const queryParams = await searchParams
 
-    const { data } = await getStudentByGroup(groupType, 'DESC')
+    const { groupType = 'a' , page=1} = queryParams
+
+    const { data, count } = await getStudentByGroup(groupType, 'DESC', page)
 
     if (data.length === 0) {
         return <div className="text-center text-2xl">No data</div>
@@ -33,7 +37,7 @@ export default async function RankingTable({ searchParams }: IProps) {
 
     return (
         <Table className=" ">
-            {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
+    
             <TableHeader className=""    >
                 <TableRow>
                     <TableHead className="text-left w-[100px]">Examination Number</TableHead>
@@ -58,8 +62,13 @@ export default async function RankingTable({ searchParams }: IProps) {
                     )
                 })}
             </TableBody>
-            <TableFooter>
-
+            <TableFooter >
+                <TableRow>
+                    <TableCell colSpan={columns.length + 2}>
+                        <PaginationTable count={count} queryParams={queryParams as any} />
+                    </TableCell>
+                </TableRow>
+               
             </TableFooter>
         </Table>
     )

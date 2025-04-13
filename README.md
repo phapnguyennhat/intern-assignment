@@ -19,6 +19,8 @@ TechStack: NestJs, NextJs, Postgres, Redis
     intern-assignment/
     ├── BE/
     │   ├── Dockerfile
+    │   ├──src/
+    │   │   │── seeder.ts
     ├── FE/
     │   ├── Dockerfile
     ├── docker-compose.yml

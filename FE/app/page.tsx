@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 interface IProps {
-  searchParams: Promise<{ groupType: string }>
+  searchParams: Promise<{ groupType: string , page:number}>
 }
 export default function Home({ searchParams }: IProps) {
 

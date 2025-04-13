@@ -1,3 +1,4 @@
+import { SearchParams } from "@/types/searchParams.type";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -34,3 +35,24 @@ export function isErrorResponse(response: any): response is { statusCode: number
 export async function delay(ms: number) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
+export const createQueryString = (name: string |undefined, value: string, queryParams: SearchParams) => {
+	const params = new URLSearchParams(queryParams as any);
+	
+  
+	if(!name){
+	  return params.toString()
+	}
+  
+	if(params.get(name)===value){
+	  params.delete(name)
+	  
+	}else{
+	  params.set(name, value);
+	}
+	
+  
+	return params.toString();
+  };
+  
